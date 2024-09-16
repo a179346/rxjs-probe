@@ -1,6 +1,6 @@
 {
   "name": "@rxjs-probe/core",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "rxjs-probe provides an interface similar to Kubernetes probes using RxJS to detect service health.",
   "keywords": [
     "rxjs",
