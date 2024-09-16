@@ -21,7 +21,7 @@ export class HttpProbePerformer extends ProbePerformer {
     const port = config.port;
 
     const url = new URL(
-      `${scheme.toLowerCase()}://${host}${port ? `:${port}` : ''}${path}`
+      `${scheme.toLowerCase()}://${host}${port ? `:${port}` : ''}${path[0] === '/' ? '' : '/'}${path}`
     ).toString();
     const headers = new Headers();
     for (const key in httpHeaders) {
