@@ -1,0 +1,44 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "namedInputs": {
+    "all": [
+      "{projectRoot}/**/*"
+    ],
+    "public": [
+      "!{projectRoot}/**/*.test.*"
+    ]
+  },
+  "targetDefaults": {
+    "lint": {
+      "inputs": [
+        "public"
+      ],
+      "cache": true
+    },
+    "build": {
+      "dependsOn": [
+        "lint",
+        "^build"
+      ],
+      "inputs": [
+        "public",
+        "^public"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ],
+      "cache": true
+    },
+    "test": {
+      "dependsOn": [
+        "build"
+      ],
+      "inputs": [
+        "all",
+        "^public"
+      ],
+      "cache": true
+    }
+  },
+  "defaultBase": "main"
+}

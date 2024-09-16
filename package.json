@@ -1,0 +1,31 @@
+{
+  "name": "rxjs-probe",
+  "private": true,
+  "scripts": {
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "lint": "lerna run lint"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.5",
+    "@types/prettier": "^2.7.3",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-promise": "^7.1.0",
+    "express": "^4.21.0",
+    "jest": "^29.7.0",
+    "lerna": "^8.1.8",
+    "nx": "19.7.3",
+    "prettier": "^3.3.3",
+    "rxjs": "^7.8.1",
+    "typescript": "^5.6.2"
+  }
+}

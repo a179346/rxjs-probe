@@ -1,0 +1,44 @@
+{
+  "name": "@rxjs-probe/http-probe-performer",
+  "version": "0.0.0",
+  "description": "The probe performer that send HTTP requests to perform the health check.",
+  "keywords": [
+    "rxjs",
+    "probe",
+    "node",
+    "browser",
+    "health-check",
+    "typescript",
+    "ts",
+    "http"
+  ],
+  "author": "a179346 <r122164152@gmail.com>",
+  "homepage": "https://github.com/a179346/rxjs-probe",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "directories": {
+    "dist": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a179346/rxjs-probe.git"
+  },
+  "scripts": {
+    "lint": "eslint ./src",
+    "build": "tsc && prettier --ignore-path .prettierignore --write ./dist/**/*.ts",
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/a179346/rxjs-probe/issues"
+  },
+  "peerDependencies": {
+    "@rxjs-probe/core": "*"
+  }
+}
