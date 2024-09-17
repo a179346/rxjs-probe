@@ -27,7 +27,14 @@ module.exports = {
     'no-console': 'error',
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
-  settings: { 'import/resolver': { node: { extensions: ['.js', '.ts'] } } },
+  settings: {
+    'import/resolver': {
+      node: {
+        project: ['tsconfig.json', 'package/tsconfig.json'],
+        extensions: ['.js', '.ts'],
+      },
+    },
+  },
   overrides: [
     {
       files: ['*.js'],
