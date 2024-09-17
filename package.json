@@ -4,8 +4,7 @@
     "lint": "lerna run lint",
     "build": "lerna run build",
     "test": "lerna run test",
-    "prepack": "npm test",
-    "publish-packages": "lerna publish from-git --yes"
+    "prepack": "npm test"
   },
   "workspaces": [
     "packages/*"
