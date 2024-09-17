@@ -38,9 +38,10 @@ jobs:
           git push origin "release/${GITHUB_REF:11}"
 
       - name: Publish Packages
-        run: npx lerna publish ${{ github.event.release.tag_name }} --yes
+        run: npx lerna publish ${{ github.event.release.tag_name }} --yes --no-push --no-git-tag-version
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
       - name: Remove Release Branch
         run: |
           git switch main
