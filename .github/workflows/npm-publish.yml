@@ -3,15 +3,9 @@ on:
   release:
     types: [published]
 
-env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   publish-npm-packages:
     runs-on: ubuntu-latest
-    permissions:
-      contents: 'write'
-      packages: 'write'
-      actions: 'read'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,23 +21,7 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Git Identity
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
-      - name: Prepare Release Branch
-        run: |
-          git switch -c "release/${GITHUB_REF:11}"
-          git push origin "release/${GITHUB_REF:11}"
-
       - name: Publish Packages
         run: npx lerna publish ${{ github.event.release.tag_name }} --yes --no-push --no-git-tag-version
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-
-      - name: Remove Release Branch
-        run: |
-          git switch main
-          git branch -D "release/${GITHUB_REF:11}"
-          git push origin --delete "release/${GITHUB_REF:11}"
