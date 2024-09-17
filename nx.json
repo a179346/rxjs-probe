@@ -10,6 +10,9 @@
   },
   "targetDefaults": {
     "lint": {
+      "dependsOn": [
+        "^build"
+      ],
       "inputs": [
         "public"
       ],
