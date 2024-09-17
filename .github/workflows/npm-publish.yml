@@ -10,7 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - run: git checkout "${GITHUB_REF:11}"
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -18,7 +17,27 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install dependencies
         run: npm ci
+      - name: Git Identity
+        run: |
+          git config --global user.name '${GITHUB_ACTOR}'
+          git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
+      - name: Prepare release branch
+        run: |
+          git switch -c "release/${GITHUB_REF:11}"
+          git push origin "release/${GITHUB_REF:11}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish packages
         run: npx lerna publish ${{ github.event.release.tag_name }} --yes
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - name: Remove release branch
+        run: |
+          git switch main
+          git branch -D "release/${GITHUB_REF:11}"
+          git push origin --delete "release/${GITHUB_REF:11}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
