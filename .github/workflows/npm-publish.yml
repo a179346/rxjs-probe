@@ -10,8 +10,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Create temp branch for publish
-        run: git switch -c temp-publish
+        with:
+          ref: ${{ github.event.release.head.ref }}
+          clean: true
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
