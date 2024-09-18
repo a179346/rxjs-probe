@@ -1,7 +1,7 @@
 {
   "name": "@rxjs-probe/http-probe-performer",
   "version": "1.0.0-alpha.0",
-  "description": "The probe performer that send HTTP requests to perform the health check.",
+  "description": "The probe performer that send HTTP GET requests to perform the health check.",
   "keywords": [
     "rxjs",
     "probe",
