@@ -1,6 +1,26 @@
 import { forkJoin, Observable, race, repeat, switchMap, tap, timer } from 'rxjs';
 
+/*!
+ * @rxjs-probe/core
+ *
+ * rxjs-probe provides an interface similar to Kubernetes probes using RxJS to detect service health.
+ *
+ * [GitHub]: https://github.com/a179346/rxjs-probe
+ * [npm]: https://www.npmjs.com/package/@rxjs-probe/core
+ */
+
+/**
+ * ProbePerformer is a class that defines how to perform a health check.
+ *
+ * Use this class to create a custom health check performer.
+ *
+ * Or leverage our predefined health check performers:
+ * - [HttpProbePerformer](https://www.npmjs.com/package/@rxjs-probe/http-probe-performer)
+ */
 export class ProbePerformer {
+  /**
+   * A function that performs the health check. Throw an error if the health check fails.
+   */
   protected readonly _runHealthCheck: (timeoutSeconds: number) => Promise<void> | void;
 
   constructor(runHealthCheck: (timeoutSeconds: number) => Promise<void> | void) {
@@ -28,6 +48,11 @@ export class ProbePerformer {
 
 export type ProbeStatus = 'unknown' | 'healthy' | 'unhealthy';
 
+/**
+ * ProbeConfig is the configuration for a probe.
+ *
+ * Check the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes) for more information.
+ */
 export interface ProbeConfig {
   performer: ProbePerformer;
   initialDelaySeconds?: number;

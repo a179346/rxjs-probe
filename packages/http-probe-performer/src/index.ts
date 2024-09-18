@@ -1,5 +1,19 @@
 import { ProbePerformer } from '@rxjs-probe/core';
 
+/*!
+ * @rxjs-probe/http-probe-performer
+ *
+ * The probe performer that send HTTP GET requests to perform the health check.
+ *
+ * [GitHub]: https://github.com/a179346/rxjs-probe
+ * [npm]: https://www.npmjs.com/package/@rxjs-probe/http-probe-performer
+ */
+
+/**
+ * The configuration for the HTTP probe performer.
+ *
+ * Check the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#http-probes) for more information.
+ */
 interface HttpProbePerformerConfig {
   host: string;
   scheme?: 'HTTP' | 'HTTPS';
