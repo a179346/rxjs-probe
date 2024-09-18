@@ -39,9 +39,8 @@ export class HttpProbePerformer extends ProbePerformer {
     ).toString();
     const headers = new Headers();
     for (const key in httpHeaders) {
-      if (Object.prototype.hasOwnProperty.call(httpHeaders, key)) {
+      if (Object.prototype.hasOwnProperty.call(httpHeaders, key) && httpHeaders[key] !== undefined)
         headers.set(key, httpHeaders[key]);
-      }
     }
 
     super(async (timeoutSeconds: number) => {
@@ -97,7 +96,11 @@ function _checkHttpProbePerformerConfig(
       throw new Error('httpHeaders must be an object');
     }
     for (const key in config.httpHeaders) {
-      if (Object.prototype.hasOwnProperty.call(config.httpHeaders, key)) {
+      if (
+        Object.prototype.hasOwnProperty.call(config.httpHeaders, key) &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (config.httpHeaders as any)[key] !== undefined
+      ) {
         if (typeof key !== 'string' || key === '') {
           throw new Error('httpHeaders keys must be non-empty strings');
         }
