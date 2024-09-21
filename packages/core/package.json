@@ -30,6 +30,7 @@
     "url": "git+https://github.com/a179346/rxjs-probe.git"
   },
   "scripts": {
+    "dev": "nodemon ./src/index.ts",
     "lint": "eslint ./src",
     "build": "tsc && prettier --ignore-path .prettierignore --write ./dist/**/*.ts",
     "test": "jest"

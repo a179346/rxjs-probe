@@ -25,7 +25,7 @@ describe('HTTP Probe Performer', () => {
         port: 3000,
       });
 
-      const observable = performer.getObservable(2);
+      const observable = performer.createObservable(2);
       const healthy = await firstValueFrom(observable);
       expect(healthy).toEqual(true);
     }, 2000);
@@ -36,7 +36,7 @@ describe('HTTP Probe Performer', () => {
         port: 3000,
       });
 
-      const observable = performer.getObservable(0.5);
+      const observable = performer.createObservable(0.5);
       const healthy = await firstValueFrom(observable);
       expect(healthy).toEqual(false);
     }, 2000);

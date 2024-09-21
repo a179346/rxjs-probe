@@ -31,7 +31,7 @@ describe('Probe', () => {
       });
 
       let expectedStatus = 'unknown';
-      const subscription = probe.getObservable().subscribe({
+      const subscription = probe.createObservable().subscribe({
         next: value => {
           const unsubscribe = () => {
             setTimeout(() => {
