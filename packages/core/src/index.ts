@@ -27,6 +27,7 @@ export class ProbePerformer {
     this._runHealthCheck = runHealthCheck;
   }
 
+  // @internal
   createObservable(timeoutSeconds: number) {
     return new Observable<boolean>(subscriber => {
       Promise.resolve()
