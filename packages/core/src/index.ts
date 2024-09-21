@@ -27,7 +27,7 @@ export class ProbePerformer {
     this._runHealthCheck = runHealthCheck;
   }
 
-  getObservable(timeoutSeconds: number) {
+  createObservable(timeoutSeconds: number) {
     return new Observable<boolean>(subscriber => {
       Promise.resolve()
         .then(() => {
@@ -80,7 +80,12 @@ export class Probe {
     this._failureThreshold = config.failureThreshold ?? 3;
   }
 
-  getObservable() {
+  /**
+   * Create a `cold` observable that emits the status of the probe.
+   *
+   * Check the [RxJS Glossary](https://rxjs.dev/guide/glossary-and-semantics#cold) for more information on cold observables.
+   */
+  createObservable() {
     return new Observable<ProbeStatus>(subscriber => {
       subscriber.next('unknown');
 
@@ -113,7 +118,7 @@ export class Probe {
             forkJoin([
               timer(this._periodSeconds * 1000),
               race([
-                this._performer.getObservable(this._timeoutSeconds),
+                this._performer.createObservable(this._timeoutSeconds),
                 timer(this._timeoutSeconds * 1000 + 50),
               ]).pipe(tap(onHealthCheckResult)),
             ]).pipe(repeat())
