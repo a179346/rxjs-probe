@@ -81,9 +81,10 @@ export class Probe {
   }
 
   /**
-   * Create a `cold` observable that emits the status of the probe.
+   * Create a [cold observable](https://rxjs.dev/guide/glossary-and-semantics#cold) that emits the status of the probe.
    *
-   * Check the [RxJS Glossary](https://rxjs.dev/guide/glossary-and-semantics#cold) for more information on cold observables.
+   * If you want to share the observable among multiple subscribers, the [shareReplay
+](https://rxjs.dev/api/index/function/shareReplay) operator is recommended.
    */
   createObservable() {
     return new Observable<ProbeStatus>(subscriber => {
