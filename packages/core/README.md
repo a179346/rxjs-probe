@@ -20,7 +20,7 @@
 </p>
 </div>
 
-> rxjs-probe provides an interface similar to Kubernetes probes using RxJS to detect service health.
+> rxjs-probe provides an interface similar to [Kubernetes probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) using [RxJS](https://rxjs.dev/) to detect service health.
 
 ## 🔗 Link
 
