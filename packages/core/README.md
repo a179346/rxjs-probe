@@ -68,7 +68,7 @@ You can find more examples on how to use rxjs-probe in [rxjs-probe-examples GitH
 ## 🔎 Probe Performers
 
 - [Probe Performer](https://github.com/a179346/rxjs-probe-examples/tree/main?tab=readme-ov-file#-custom-probe-performer) - The customizable health check performer
-- [Http Probe Performer](https://github.com/a179346/rxjs-probe/tree/main/packages/http-probe-performer#readme) - send HTTP GET requests to perform the health check.
+- [Http Probe Performer](https://github.com/a179346/rxjs-probe/tree/main/packages/http-probe-performer#readme) - Sending HTTP GET requests to perform the health check.
 
 ## 🤝 Contributing
 

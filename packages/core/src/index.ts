@@ -15,7 +15,7 @@ import { forkJoin, Observable, race, repeat, switchMap, tap, timer } from 'rxjs'
  * Use this class to create a custom health check performer.
  *
  * Or leverage our predefined health check performers:
- * - [HttpProbePerformer](https://www.npmjs.com/package/@rxjs-probe/http-probe-performer)
+ * - [HttpProbePerformer](https://github.com/a179346/rxjs-probe/tree/main/packages/http-probe-performer)
  */
 export class ProbePerformer {
   /**

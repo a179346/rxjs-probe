@@ -30,6 +30,18 @@ describe('HTTP Probe Performer', () => {
       expect(healthy).toEqual(true);
     }, 2000);
 
+    it('should return false when the status code is greater than 399', async () => {
+      const performer = new HttpProbePerformer({
+        host: 'localhost',
+        port: 3000,
+        path: '/not-found',
+      });
+
+      const observable = performer.createObservable(2);
+      const healthy = await firstValueFrom(observable);
+      expect(healthy).toEqual(false);
+    }, 2000);
+
     it('should return false when timeoutd', async () => {
       const performer = new HttpProbePerformer({
         host: 'localhost',

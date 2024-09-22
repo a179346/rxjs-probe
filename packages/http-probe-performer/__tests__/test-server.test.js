@@ -14,6 +14,10 @@ module.exports = {
         }, responseTimeout);
       });
 
+      app.get('/not-found', (req, res) => {
+        res.status(404).send();
+      });
+
       server = app.listen(3000, () => {
         resolve();
       });
