@@ -55,9 +55,8 @@ export class HttpProbePerformer extends ProbePerformer {
         credentials: 'same-origin',
       });
 
-      if (response.status < 200 || response.status >= 400) {
-        throw new Error(`HTTP status code: ${response.status}`);
-      }
+      if (response.status >= 200 && response.status < 400) return;
+      throw new Error(`HTTP status code: ${response.status}`);
     });
   }
 }
